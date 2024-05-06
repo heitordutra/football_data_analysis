@@ -25,7 +25,8 @@ headers = {
   "Cookie":"_scid=a2c64644-8845-4c87-a02d-10300efe6317; _ga=GA1.1.1480352166.1694613292; _uc_referrer=https://www.sofascore.com/pt/; _tt_enable_cookie=1; _ttp=UKKbqjh7Fg57k9kijgFu-n1uvDt; _scid_r=a2c64644-8845-4c87-a02d-10300efe6317; _gcl_au=1.1.1302485585.1714668818; _ga_QH2YGS7BB4=GS1.1.1714668820.3.1.1714670868.0.0.0; _ga_3KF4XTPHC4=GS1.1.1714668820.2.1.1714670868.60.0.0; _ga_HNQ9P9MGZR=GS1.1.1714668825.3.1.1714670868.60.0.0" ,
   "DNT":"1" ,
   "If-None-Match":"W/^\^1cee2d0260^\^'^",
-  "Referer":referer,
+  #"Referer":referer,
+  "Referer": "https://www.sofascore.com/",
   "Sec-Fetch-Dest":"empty" ,
   "Sec-Fetch-Mode":"cors" ,
   "Sec-Fetch-Site":"same-origin" ,
@@ -76,7 +77,25 @@ team_image_url = sofascore_api_link + f"/team/{home_team_id}/image"
 df = pd.json_normalize(data['event']).transpose()
 # %%
 df.to_csv(f'../export/sofascore_{match_name}.csv', index=True,encoding="utf-8-sig")
-
+'''
+curl "https://www.sofascore.com/api/v1/team/1968/performance" ^
+  -H "Accept: */*" ^
+  -H "Accept-Language: en-US,en;q=0.9,pt;q=0.8,fr;q=0.7,pt-BR;q=0.6,pt-PT;q=0.5" ^
+  -H "Cache-Control: max-age=0" ^
+  -H "Connection: keep-alive" ^
+  -H "Cookie: _scid=a2c64644-8845-4c87-a02d-10300efe6317; _ga=GA1.1.1480352166.1694613292; _uc_referrer=https://www.sofascore.com/pt/; _tt_enable_cookie=1; _ttp=UKKbqjh7Fg57k9kijgFu-n1uvDt; _scid_r=a2c64644-8845-4c87-a02d-10300efe6317; _gcl_au=1.1.1302485585.1714668818; _ga_HNQ9P9MGZR=GS1.1.1714992194.5.1.1714992223.31.0.0; _ga_3KF4XTPHC4=GS1.1.1714992194.4.1.1714992226.28.0.0; _ga_QH2YGS7BB4=GS1.1.1714992194.5.1.1714992226.0.0.0" ^
+  -H "DNT: 1" ^
+  -H ^"If-None-Match: W/^\^"a0b5334fb1^\^"^" ^
+  -H "Referer: https://www.sofascore.com/team/football/santos/1968" ^
+  -H "Sec-Fetch-Dest: empty" ^
+  -H "Sec-Fetch-Mode: cors" ^
+  -H "Sec-Fetch-Site: same-origin" ^
+  -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0" ^
+  -H "X-Requested-With: 45e338" ^
+  -H ^"sec-ch-ua: ^\^"Chromium^\^";v=^\^"124^\^", ^\^"Microsoft Edge^\^";v=^\^"124^\^", ^\^"Not-A.Brand^\^";v=^\^"99^\^"^" ^
+  -H "sec-ch-ua-mobile: ?0" ^
+  -H ^"sec-ch-ua-platform: ^\^"Windows^\^"^"
+'''
 '''
 curl "https://api.sofascore.app/api/v1/team/1968/image" ^
   -H "Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8" ^
